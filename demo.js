@@ -25,13 +25,9 @@ var fetchData = function(){
 		comments_url: 'comments_url'
 		
 	};
-			for (var i = 0; i < OriginalGistList.length; i++)
-			{
+			
 				createGistList(document.getElementById('gists'),
 							 OriginalGistList);
-				
-			}
-			
 		
 		}
 
@@ -40,3 +36,17 @@ var fetchData = function(){
 	req.send();
 }
 
+function createGistList(ul, OriginalGistList) {
+	for (var i = ul.childNodes.length - 1; i >= 0; i--) {
+		ul.removeChild(ul.childNodes[i]);
+	}
+	OriginalGistList.forEach(function(s) {
+		for (var i = 0; i < OriginalGistList.length; i++)
+			{
+		var li = document.createElement('li');
+		li.innerText = 'URL: ' 
+		li.innerHTML = OriginalGistList[i].url;
+		ul.appendChild(li);
+			}
+	});
+}
